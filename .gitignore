@@ -1,0 +1,34 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Build / output
+dist/
+build/
+
+# Editor files
+.vscode/
+.idea/
+
+# Audio/media local (NO subir tus mp3)
+public/music/
+*.mp3
+*.wav
+*.m4a
+*.ogg
+
+# Optional: lock files (solo si no quieres versionarlos)
+# package-lock.json
+
+# Logs
+logs/
+*.log
