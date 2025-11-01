@@ -41,10 +41,27 @@
 
       <canvas id="waveCanvas" width="600" height="120" style="width:100%;border-radius:8px;background:transparent"></canvas>
 
-      <div class="controls" style="margin-top:4px">
-        <button id="btnPrev" class="btn">⏮</button>
-        <button id="btnPlay" class="btn primary">▶️ Play</button>
-        <button id="btnNext" class="btn">⏭</button>
+      <div class="controls" role="group" aria-label="Controles de reproducción">
+        <button id="btnPrev" class="icon-circle" title="Anterior" aria-label="Anterior">
+          <!-- SVG Prev -->
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6v12l8.5-6L6 6zM18 6v12h-2V6h2z"/>
+          </svg>
+        </button>
+
+        <button id="btnPlay" class="btn primary" title="Reproducir" aria-label="Reproducir">
+          <!-- contenido SVG dinámico (se reemplaza en JS) -->
+          <svg id="iconPlay" class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+
+        <button id="btnNext" class="icon-circle" title="Siguiente" aria-label="Siguiente">
+          <!-- SVG Next -->
+          <svg class="icon-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 6v12l-8.5-6L16 6zM6 6v12H4V6h2z"/>
+          </svg>
+        </button>
       </div>
 
       <input id="seek" type="range" min="0" max="100" value="0" aria-label="Progreso">

@@ -1,4 +1,3 @@
-// public/js/trackRepository.js
 class TrackRepository {
   async getTracks() {
     const res = await fetch('/api/tracks');
@@ -11,9 +10,10 @@ class TrackRepository {
     return res.ok ? await res.json() : null;
   }
   async deleteTrack(id) {
-    // id ya es filename (string), hay que encode para URL
+    // id es el filename; encodearlo para evitar problemas con espacios/caracteres
     const res = await fetch(`/api/tracks/${encodeURIComponent(id)}`, { method: 'DELETE' });
-    return res.ok ? await res.json() : null;
+    return res.ok;
   }
 }
+
 window.trackRepository = new TrackRepository();
