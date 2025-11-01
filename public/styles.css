@@ -1,0 +1,95 @@
+:root{
+  --bg: #071229;
+  --panel: #09111a;
+  --muted: #9aa4b2;
+  --accent: #6b5cff;
+  --accent-2: #00bcd4;
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  --text: #e6eef8;
+  --shadow: 0 8px 26px rgba(3,8,20,0.6);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  padding:28px;
+  background: linear-gradient(180deg,#041025 0%, #071229 60%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  font-size:15px;
+}
+
+main{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  gap:22px;
+  grid-template-columns:1fr 360px;
+  align-items:start;
+}
+
+/* Playlist card */
+.playlist-card, .player-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), var(--glass));
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+
+#playlist{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  max-height:420px;
+  overflow:auto;
+  padding-right:6px;
+}
+.track{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:10px 12px;border-radius:10px;
+  transition: all .14s ease; cursor:pointer;
+  background:transparent;border:1px solid transparent;
+}
+.track:hover{
+  transform:translateY(-2px);
+  background: rgba(107,92,255,0.05);
+  border-color: rgba(255,255,255,0.02);
+}
+.track .left{display:flex;gap:12px;align-items:center}
+.track .num{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.02);display:grid;place-items:center;color:var(--muted);font-weight:600}
+.track .title{font-weight:600;color:var(--text)}
+.track .small{font-size:0.86rem;color:var(--muted)}
+
+.track.active{
+  background: linear-gradient(90deg, rgba(107,92,255,0.12), rgba(0,188,212,0.03));
+  border:1px solid rgba(107,92,255,0.12);
+}
+.track.active .num{
+  background: linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:white;
+}
+
+/* Player */
+.player-card{ display:flex; flex-direction:column; gap:12px; min-height:420px }
+.controls{ display:flex; gap:8px; align-items:center }
+.btn{ padding:10px 12px; border-radius:10px; border:0; cursor:pointer; background:transparent; color:var(--text); font-weight:700}
+.btn.primary{ background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; box-shadow: 0 8px 24px rgba(107,92,255,0.08) }
+
+#seek{ width:100%; height:8px; border-radius:8px; background: linear-gradient(90deg,var(--accent),var(--accent-2)); appearance:none; outline:none }
+#seek::-webkit-slider-thumb{ -webkit-appearance:none; width:14px;height:14px;border-radius:50%; background:white; border:3px solid rgba(0,0,0,0.18) }
+
+/* upload */
+.upload-form{ display:flex; gap:8px; align-items:center; margin-top:14px }
+.upload-form button{ padding:8px 10px; border-radius:8px; border:0; background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.02) }
+
+/* responsive */
+@media (max-width:980px){
+  main{grid-template-columns:1fr;padding:16px}
+  .player-card{order:2}
+  .playlist-card{order:1}
+}

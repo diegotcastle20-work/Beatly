@@ -1,24 +1,63 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Mi Reproductor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Beatly — Reproductor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main>
-    <h1>Mi Reproductor</h1>
-    <div id="playlist"></div>
+    <!-- LEFT: playlist -->
+    <section class="playlist-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div>
+          <h1>Beatly</h1>
+          <div class="header-lead">Tu reproductor local — arrastra, sube y reproduce</div>
+        </div>
+        <small class="small muted">Local</small>
+      </div>
 
-    <div id="player">
-      <button id="btnPrev">Prev</button>
-      <button id="btnPlay">Play</button>
-      <button id="btnNext">Next</button>
-      <span id="trackTitle"></span>
-      <input id="seek" type="range" min="0" max="100" value="0">
-    </div>
+      <div id="playlist" aria-label="Lista de canciones"></div>
+      <div class="small muted" style="margin-top:10px">
+        Haz click en una pista para reproducirla. Puedes subir nuevas canciones más abajo.
+      </div>
+
+      <form id="uploadForm" class="upload-form" aria-label="Subir canción">
+        <label for="fileInput" class="small muted">Seleccionar canción</label>
+        <input type="file" id="fileInput" name="file" accept=".mp3,.wav,.ogg,.m4a,.flac" required>
+        <button type="submit" id="uploadBtn" class="btn">Subir</button>
+        <div id="uploadMessage" class="small muted"></div>
+      </form>
+    </section>
+
+    <!-- RIGHT: player -->
+    <aside class="player-card" aria-label="Reproductor">
+      <div>
+        <div id="trackTitle" class="small muted">Sin reproducción</div>
+        <div id="trackArtist" class="small muted" style="margin-top:4px"></div>
+      </div>
+
+      <canvas id="waveCanvas" width="600" height="120" style="width:100%;border-radius:8px;background:transparent"></canvas>
+
+      <div class="controls" style="margin-top:4px">
+        <button id="btnPrev" class="btn">⏮</button>
+        <button id="btnPlay" class="btn primary">▶️ Play</button>
+        <button id="btnNext" class="btn">⏭</button>
+      </div>
+
+      <input id="seek" type="range" min="0" max="100" value="0" aria-label="Progreso">
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+        <div class="small muted" id="timeCurrent">0:00</div>
+        <div class="small muted" id="timeTotal">0:00</div>
+      </div>
+    </aside>
   </main>
 
-  <script src="app.js"></script>
+  <!-- Scripts (orden importante) -->
+  <script src="track-repository.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
